@@ -8,6 +8,10 @@ using System.Web;
 using System.Web.Mvc;
 using SoccerTrainingManager.Models;
 using System.Collections;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
+using System.Text;
+using System.IO;
 
 namespace SoccerTrainingManager.Controllers
 {
@@ -54,10 +58,73 @@ namespace SoccerTrainingManager.Controllers
             return View();
         }
 
-        public ActionResult GeneratePDF()
+        public FileResult CreatePDF()
         {
+            //get needed objects for IText
+            //MemoryStream workStream = new MemoryStream();
+            StringBuilder status = new StringBuilder("");
+            string PdfFileName = ("TrainingTest" + ".pdf");
+            //create document with some dimension
+            Document document = new Document();
+            document.SetMargins(72, 72, 72, 72);
+            //create writer object, with specified output stream
+            var output = new MemoryStream();
 
-            return View();
+            var writer = PdfWriter.GetInstance(document, output);
+            writer.CloseStream = false;
+
+            document.Open();
+            //declare text format for future use
+            var titleFont = FontFactory.GetFont("Arial", 18, Font.BOLD);
+            var subTitleFont = FontFactory.GetFont("Arial", 14, Font.BOLD);
+            var boldTableFont = FontFactory.GetFont("Arial", 12, Font.BOLD);
+            var endingMessageFont = FontFactory.GetFont("Arial", 10, Font.ITALIC);
+            var bodyFont = FontFactory.GetFont("Arial", 12, Font.NORMAL);
+
+            document.Add(new Paragraph("Training Session", titleFont));
+
+            //declare format of table
+            var bidInfoTable = new PdfPTable(2);
+            bidInfoTable.HorizontalAlignment = 0;
+            bidInfoTable.SpacingBefore = 10;
+            bidInfoTable.SpacingAfter = 10;
+            bidInfoTable.DefaultCell.Border = 0;
+            bidInfoTable.SetWidths(new int[] { 1, 4 });
+
+            //add information to cells in table (no border)
+            //modify IronPDF for IText
+            //alter format--center info, create spacing for client sig and date
+            bidInfoTable.AddCell(new Phrase("Warm Up", boldTableFont));
+            bidInfoTable.AddCell("Jog");
+            bidInfoTable.AddCell(new Phrase("Technical Drill", boldTableFont));
+            bidInfoTable.AddCell("Andy Lee Shalke Drill");
+            bidInfoTable.AddCell(new Phrase("Possession Drill", boldTableFont));
+            bidInfoTable.AddCell("BlackJack 21");
+            bidInfoTable.AddCell(new Phrase("Shooting Drill", boldTableFont));
+            bidInfoTable.AddCell("Caleb Porter Shooting");
+            bidInfoTable.AddCell(new Phrase("Fitness", boldTableFont));
+            bidInfoTable.AddCell("None");
+            bidInfoTable.AddCell(new Phrase("Rating", boldTableFont));
+            bidInfoTable.AddCell("5");
+            
+
+            //adds contents to pdf
+            document.Add(bidInfoTable);
+
+            //var logo = iTextSharp.text.Image.GetInstance(Server.MapPath(filePath))
+
+            document.Close();
+
+            //Response.ContentType = "application/pdf";
+            //Response.AddHeader("Content", PdfFileName);
+            //Response.BinaryWrite(output.ToArray());
+
+            byte[] byteInfo = output.ToArray();
+            output.Write(byteInfo, 0, byteInfo.Length);
+            output.Position = 0;
+
+            return File(output, "application/pdf", PdfFileName);
+
         }
 
 

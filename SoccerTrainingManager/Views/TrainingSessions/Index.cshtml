@@ -32,32 +32,35 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.WarmUp)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TechnicalDrill)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PossessionDrill)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ShootingDrill)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Fitness)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Rating)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.WarmUp)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TechnicalDrill)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PossessionDrill)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ShootingDrill)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fitness)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Rating)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+            </td>
+        </tr>
+    }
+
+    @Html.ActionLink("Create Pdf", "CreatePdf", "TrainingSessions")
 
 </table>
