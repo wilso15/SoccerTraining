@@ -1,0 +1,63 @@
+﻿@model IEnumerable<SoccerTrainingManager.Models.TrainingSession>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table table-striped table-hover ">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.WarmUp)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TechnicalDrill)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PossessionDrill)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ShootingDrill)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Fitness)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Rating)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.WarmUp)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TechnicalDrill)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PossessionDrill)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ShootingDrill)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Fitness)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Rating)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,64 @@
+﻿@model SoccerTrainingManager.Models.TrainingSession
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>TrainingSession</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.WarmUp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WarmUp)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TechnicalDrill)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TechnicalDrill)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PossessionDrill)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PossessionDrill)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ShootingDrill)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ShootingDrill)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fitness)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fitness)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

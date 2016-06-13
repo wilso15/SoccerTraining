@@ -1,0 +1,94 @@
+﻿@model IEnumerable<SoccerTrainingManager.Models.Roster>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table table-striped table-hover ">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Player)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Jersey)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Shots)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ShotsOnTarget)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Passes)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PassesCompleted)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Interceptions)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Dribbles)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DribblesCompleted)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Guardian)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GuardianEmail)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Player)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Jersey)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Shots)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ShotsOnTarget)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Passes)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PassesCompleted)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Interceptions)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Dribbles)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DribblesCompleted)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Guardian)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GuardianEmail)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID }) |
+            @Html.ActionLink("Email", "Email", new { id = item.ID })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,80 @@
+﻿@model SoccerTrainingManager.Models.TrainingSession
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>TrainingSession</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.WarmUp, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(m => m.WarmUp, (IEnumerable<SelectListItem>)ViewBag.WarmUps, "Select Warmup", new {@class = "form-control"})
+                @Html.ValidationMessageFor(model => model.WarmUp, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.TechnicalDrill, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(m => m.TechnicalDrill, (IEnumerable<SelectListItem>)ViewBag.TechnicalDrills, "Select Technical Drill", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.TechnicalDrill, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.PossessionDrill, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(m => m.PossessionDrill, (IEnumerable<SelectListItem>)ViewBag.PossessionDrills, "Select Possession Drill", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.PossessionDrill, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ShootingDrill, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(m => m.ShootingDrill, (IEnumerable<SelectListItem>)ViewBag.ShootingDrills, "Select Shooting Drill", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ShootingDrill, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Fitness, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(m => m.Fitness, (IEnumerable<SelectListItem>)ViewBag.Fitnesses, "Select Fitness", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Fitness, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Rating, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(m => m.Rating, (IEnumerable<SelectListItem>)ViewBag.Ratings, "Rate Session", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Rating, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,58 @@
+﻿@model SoccerTrainingManager.Models.TrainingSession
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>TrainingSession</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.WarmUp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WarmUp)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TechnicalDrill)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TechnicalDrill)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PossessionDrill)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PossessionDrill)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ShootingDrill)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ShootingDrill)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fitness)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fitness)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
