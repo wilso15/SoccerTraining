@@ -41,6 +41,7 @@ namespace SoccerTrainingManager.Controllers
         }
 
         // GET: TrainingSessions/Create
+        [Authorize]
         public ActionResult Create()
         {
             IEnumerable<SelectListItem> WarmUpItems = db.WarmUps.Select(s => new SelectListItem { Value = s.Name.ToString(), Text = s.Name });
@@ -58,6 +59,7 @@ namespace SoccerTrainingManager.Controllers
             return View();
         }
 
+        [Authorize]
         public FileResult CreatePDF()
         {
             //get needed objects for IText
@@ -133,6 +135,7 @@ namespace SoccerTrainingManager.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult Create([Bind(Include = "ID,WarmUp,TechnicalDrill,PossessionDrill,ShootingDrill,Fitness,Rating")] TrainingSession trainingSession)
         {
             if (ModelState.IsValid)
@@ -145,6 +148,7 @@ namespace SoccerTrainingManager.Controllers
             return View(trainingSession);
         }
 
+        [Authorize]
         // GET: TrainingSessions/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -177,6 +181,7 @@ namespace SoccerTrainingManager.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult Edit([Bind(Include = "ID,WarmUp,TechnicalDrill,PossessionDrill,ShootingDrill,Fitness,Rating")] TrainingSession trainingSession)
         {
             IEnumerable<SelectListItem> WarmUpItems = db.WarmUps.Select(s => new SelectListItem { Value = s.Name.ToString(), Text = s.Name });
@@ -200,6 +205,7 @@ namespace SoccerTrainingManager.Controllers
             return View(trainingSession);
         }
 
+        [Authorize]
         // GET: TrainingSessions/Delete/5
         public ActionResult Delete(int? id)
         {
@@ -218,6 +224,7 @@ namespace SoccerTrainingManager.Controllers
         // POST: TrainingSessions/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult DeleteConfirmed(int id)
         {
             TrainingSession trainingSession = db.TrainingSessions.Find(id);
